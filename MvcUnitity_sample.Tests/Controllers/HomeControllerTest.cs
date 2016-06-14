@@ -6,12 +6,16 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MvcUnitity_sample;
 using MvcUnitity_sample.Controllers;
+using MvcUnitity_sample.Repository;
 
 namespace MvcUnitity_sample.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
+
+        private readonly IProductRepository repository;
+
         [TestMethod]
         public void Index()
         {
@@ -46,6 +50,19 @@ namespace MvcUnitity_sample.Tests.Controllers
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Products()
+        {
+            // Arrange
+            ProductController controller = new ProductController(new ProductRepository());
+
+            // Act 
+            ViewResult result = controller.Index() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
