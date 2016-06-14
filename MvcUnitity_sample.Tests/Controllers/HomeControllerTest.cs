@@ -14,8 +14,6 @@ namespace MvcUnitity_sample.Tests.Controllers
     public class HomeControllerTest
     {
 
-        private readonly IProductRepository repository;
-
         [TestMethod]
         public void Index()
         {
